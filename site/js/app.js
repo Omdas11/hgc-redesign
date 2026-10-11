@@ -44,7 +44,7 @@
     var file = n.file_url
       ? '<a href="' + n.file_url + '" target="_blank" rel="noopener" style="font-size:13px;font-weight:700;color:var(--gold-600)">View file &rarr;</a>'
       : '';
-    return '<a class="notice" href="notices.html">' +
+    return '<a class="notice" href="notices">' +
       '<div class="notice-date"><b>' + d.day + '</b><span>' + d.mon + '</span></div>' +
       '<div class="notice-body"><h4>' + escapeHtml(n.title) + '</h4>' +
       '<div class="meta"><span>' + escapeHtml(n.category || 'General') + '</span><span>&middot;</span><span>' + d.full + '</span>' + badge + '</div>' +

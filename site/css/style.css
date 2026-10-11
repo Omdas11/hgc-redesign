@@ -2,22 +2,23 @@
    Theme: "Light from the Hills" — deep pine green, warm gold, ivory.
    Motto: Tamaso ma jyotirgomaya (from darkness, lead me to light). */
 
+/* Palette follows the official college website: navy #123c69 + orange #fb8500. */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --pine-950: #0a241c;
-  --pine-900: #0d3527;
-  --pine-800: #114534;
-  --pine-700: #166044;
-  --gold-600: #a8851d;
-  --gold-500: #c9a227;
-  --gold-300: #e6cf7e;
-  --gold-100: #f7eed3;
-  --ivory: #faf7ee;
+  --pine-950: #081a33;
+  --pine-900: #123c69;
+  --pine-800: #1a4a80;
+  --pine-700: #2563a3;
+  --gold-600: #b85c00;
+  --gold-500: #fb8500;
+  --gold-300: #ffab4d;
+  --gold-100: #fff1dc;
+  --ivory: #faf8f4;
   --paper: #ffffff;
   --ink: #14201b;
   --muted: #5d6f64;
-  --line: #e7e0cf;
+  --line: #e6ddcb;
   --radius: 14px;
   --shadow: 0 18px 45px -18px rgba(10, 36, 28, .28);
   --font-display: 'Fraunces', 'Noto Serif Bengali', Georgia, serif;
@@ -67,7 +68,7 @@ h1, h2, h3, .display { font-family: var(--font-display); line-height: 1.15; colo
 }
 .header-inner { display: flex; align-items: center; gap: 16px; padding: 12px 0; }
 .brand { display: flex; align-items: center; gap: 13px; text-decoration: none; margin-right: auto; }
-.brand-mark { width: 52px; height: 52px; flex: none; }
+.brand-mark { height: 56px; width: auto; flex: none; mix-blend-mode: multiply; }
 .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--pine-950); line-height: 1.2; }
 .brand-sub { font-size: 12.5px; color: var(--muted); letter-spacing: .4px; }
 
@@ -88,9 +89,8 @@ h1, h2, h3, .display { font-family: var(--font-display); line-height: 1.15; colo
 .hero {
   position: relative; overflow: hidden; color: #fff;
   background:
-    radial-gradient(1100px 520px at 85% -10%, rgba(201,162,39,.28), transparent 60%),
-    radial-gradient(900px 600px at -10% 110%, rgba(22,96,68,.9), transparent 55%),
-    linear-gradient(160deg, var(--pine-950) 20%, var(--pine-800) 90%);
+    linear-gradient(160deg, rgba(8,26,51,.88) 10%, rgba(18,60,105,.72) 90%),
+    url('https://uvtqofsjyzwfoifxsnhu.supabase.co/storage/v1/object/hgc-files/images/campus_ncc.jpg') center 30% / cover no-repeat;
 }
 .hero::after { /* hill silhouette */
   content: ""; position: absolute; inset: auto 0 0 0; height: 150px;
@@ -182,9 +182,9 @@ h1, h2, h3, .display { font-family: var(--font-display); line-height: 1.15; colo
 .principal-photo {
   aspect-ratio: 4/5; border-radius: 18px; overflow: hidden; position: relative;
   background: linear-gradient(150deg, var(--pine-800), var(--pine-950));
-  display: grid; place-items: center; color: var(--gold-300);
   border: 1px solid var(--line); box-shadow: var(--shadow);
 }
+.principal-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 .principal-photo .monogram { font-family: var(--font-display); font-size: 64px; }
 blockquote.message { font-family: var(--font-display); font-size: 21px; font-style: italic; color: var(--pine-900); line-height: 1.6; }
 .message-attr { margin-top: 16px; font-size: 14px; color: var(--muted); }
@@ -280,6 +280,17 @@ table.fees tr:nth-child(even) td { background: #fbf8ef; }
 .empty-state { text-align: center; padding: 50px 20px; color: var(--muted); font-size: 15px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
+/* ---------- photo treatments ---------- */
+.photo-frame { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.photo-frame:hover img { transform: scale(1.04); }
+.gallery-strip { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 18px; }
+.gallery-strip .photo-frame { aspect-ratio: 4/3; }
+.gallery-strip figure { margin: 0; }
+.gallery-strip figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.mag-cover { border-radius: 10px; overflow: hidden; border: 1px solid var(--line); margin-bottom: 14px; aspect-ratio: 3/4; }
+.mag-cover img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
 @media (max-width: 960px) {
   .grid.cols-3, .grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
   .principal { grid-template-columns: 1fr; }
@@ -292,6 +303,7 @@ table.fees tr:nth-child(even) td { background: #fbf8ef; }
 }
 @media (max-width: 600px) {
   .grid.cols-3, .grid.cols-4, .grid.cols-2 { grid-template-columns: 1fr; }
+  .gallery-strip { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .section { padding: 60px 0; }
   .footer-grid { grid-template-columns: 1fr; }
